@@ -4,6 +4,50 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-green-signal: var(--green-signal);
+  --color-green-signal-foreground: var(--green-signal-foreground);
+  --color-amber-signal: var(--amber-signal);
+  --color-amber-signal-foreground: var(--amber-signal-foreground);
+  --color-red-signal: var(--red-signal);
+  --color-red-signal-foreground: var(--red-signal-foreground);
+  --color-surface: var(--surface);
+  --color-grid-line: var(--grid-line);
+  --shadow-glow-red: 0 0 0 1px var(--red-signal), 0 0 32px -8px var(--red-signal);
+  --shadow-panel: 0 1px 0 0 var(--grid-line), 0 24px 48px -32px oklch(0 0 0 / 0.8);
+  --animate-pulse-alert: pulse-alert 1.8s ease-in-out infinite;
+  --animate-scan: scan 2.6s linear infinite;
+}
+
+@keyframes pulse-alert {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px var(--red-signal), 0 0 24px -10px var(--red-signal);
+  }
+  50% {
+    box-shadow: 0 0 0 1px var(--red-signal), 0 0 44px -4px var(--red-signal);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+@utility gridwash {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+
 /*
  * Design system definition.
  *
