@@ -75,5 +75,5 @@ export const HOSTILE_CALLS: SimulatedCall[] = [
 
 export function randomCall(hostileChance = 0.25): SimulatedCall {
   const pool = Math.random() < hostileChance ? HOSTILE_CALLS : BENIGN_CALLS;
-  return pool[Math.floor(Math.random() * pool.length)];
+  return pool[Math.floor(Math.random() * pool.length)]!;
 }

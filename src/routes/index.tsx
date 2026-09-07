@@ -283,14 +283,14 @@ function Dashboard() {
                   <Button
                     variant="destructive"
                     disabled={busy}
-                    onClick={() => dispatch(HOSTILE_CALLS[0])}
+                    onClick={() => dispatch(HOSTILE_CALLS[0]!)}
                   >
                     drop_database_table
                   </Button>
                   <Button
                     variant="outline"
                     disabled={busy}
-                    onClick={() => dispatch(HOSTILE_CALLS[2])}
+                    onClick={() => dispatch(HOSTILE_CALLS[2]!)}
                   >
                     Prompt injection
                   </Button>
