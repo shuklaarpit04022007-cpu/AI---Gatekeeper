@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { VerdictBadge } from "@/components/verdict-badge";
@@ -9,13 +9,13 @@ import type { Decision } from "@/lib/policy";
 export const Route = createFileRoute("/console")({
   head: () => ({
     meta: [
-      { title: "AgentGuard — AI Agent Runtime Security Gateway" },
+      { title: "Live Console — AgentGuard Action Gateway" },
       {
         name: "description",
         content:
           "AgentGuard intercepts autonomous AI agent tool calls in real time, classifies them Green, Amber or Red, and holds destructive actions for human approval.",
       },
-      { property: "og:title", content: "AgentGuard — AI Agent Runtime Security Gateway" },
+      { property: "og:title", content: "Live Console — AgentGuard Action Gateway" },
       {
         property: "og:description",
         content:
@@ -134,6 +134,18 @@ function Dashboard() {
               </div>
             </div>
             <div className="flex items-center gap-3">
+              <Link
+                to="/"
+                className="font-mono text-[11px] tracking-[0.12em] text-muted-foreground uppercase hover:text-foreground"
+              >
+                Overview
+              </Link>
+              <Link
+                to="/policies"
+                className="font-mono text-[11px] tracking-[0.12em] text-muted-foreground uppercase hover:text-foreground"
+              >
+                Policies
+              </Link>
               <span className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[11px] text-muted-foreground">
                 <span
                   className={
