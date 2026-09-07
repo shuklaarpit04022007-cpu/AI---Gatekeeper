@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConsoleRouteImport } from './routes/console'
+import { Route as PoliciesRouteImport } from './routes/policies'
 import { Route as ApiPublicInterceptRouteImport } from './routes/api/public/intercept'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const ConsoleRoute = ConsoleRouteImport.update({
   path: '/console',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoliciesRoute = PoliciesRouteImport.update({
+  id: '/policies',
+  path: '/policies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicInterceptRoute = ApiPublicInterceptRouteImport.update({
   id: '/api/public/intercept',
   path: '/api/public/intercept',
@@ -32,30 +38,34 @@ const ApiPublicInterceptRoute = ApiPublicInterceptRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/console': typeof ConsoleRoute
+  '/policies': typeof PoliciesRoute
   '/api/public/intercept': typeof ApiPublicInterceptRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/console': typeof ConsoleRoute
+  '/policies': typeof PoliciesRoute
   '/api/public/intercept': typeof ApiPublicInterceptRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/console': typeof ConsoleRoute
+  '/policies': typeof PoliciesRoute
   '/api/public/intercept': typeof ApiPublicInterceptRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/console' | '/api/public/intercept'
+  fullPaths: '/' | '/console' | '/policies' | '/api/public/intercept'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/console' | '/api/public/intercept'
-  id: '__root__' | '/' | '/console' | '/api/public/intercept'
+  to: '/' | '/console' | '/policies' | '/api/public/intercept'
+  id: '__root__' | '/' | '/console' | '/policies' | '/api/public/intercept'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ConsoleRoute: typeof ConsoleRoute
+  PoliciesRoute: typeof PoliciesRoute
   ApiPublicInterceptRoute: typeof ApiPublicInterceptRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsoleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/policies': {
+      id: '/policies'
+      path: '/policies'
+      fullPath: '/policies'
+      preLoaderRoute: typeof PoliciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/intercept': {
       id: '/api/public/intercept'
       path: '/api/public/intercept'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ConsoleRoute: ConsoleRoute,
+  PoliciesRoute: PoliciesRoute,
   ApiPublicInterceptRoute: ApiPublicInterceptRoute,
 }
 export const routeTree = rootRouteImport
